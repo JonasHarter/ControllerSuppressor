@@ -1,0 +1,9 @@
+https://github.com/nefarius/ViGEm/releases/
+
+Manual Installation
+devcon.exe install HidGuardian.inf Root\HidGuardian
+devcon.exe classfilter HIDClass upper -HidGuardian
+
+Manual Removal
+devcon.exe remove Root\HidGuardian
+devcon.exe classfilter HIDClass upper !HidGuardian

@@ -1,0 +1,6 @@
+compile to release
+Developer Command Prompt for VS2017
+installutil.exe SERVICE.exe
+installutil.exe /u SERVICE.exe
+
+https://docs.microsoft.com/en-us/dotnet/framework/windows-services/walkthrough-creating-a-windows-service-application-in-the-component-designer
