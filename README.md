@@ -1,13 +1,11 @@
-# Mapper
-Maps Direct Input controllers to Xinput
+# ControllerSuppressor
+Uses HidGuardian to hide direct input devices and whitelist process to gain them access.
+Requires admin rights.
+Configuration located in C:\ProgramData\ControllerSupressor.
 
 # HidGuardian
-HidGuardian allows you to suppress your direct input controllers from the system.
-https://github.com/nefarius/ViGEm/tree/master/Sys/HidGuardian
+https://github.com/ViGEm/HidGuardian
 
-# HidWhitelistService
-The HidWhitelistService puts processes into HidGuardians whitelist.
-
-# AHK
-The autohotkey scripts maps direct input controllers to xinput via the vGenInterface.dll
-https://github.com/shauleiz/vGen
+# XOutput
+Once whitelisted can be used to map direct input controllers to xbox controllers
+https://github.com/csutorasa/XOutput
