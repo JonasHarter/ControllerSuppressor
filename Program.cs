@@ -6,6 +6,7 @@ using NLog;
 using NLog.Targets;
 using NLog.Config;
 using System.Security.Principal;
+using ControllerSupressor.Source.Input;
 
 namespace ControllerMapper
 {
@@ -25,6 +26,7 @@ namespace ControllerMapper
             ProcessWhitelister processWhitelister = ProcessWhitelister.GetInstance();
             DeviceBlacklister blacklist = DeviceBlacklister.GetInstance();
             ProcessWatcher watcher = new ProcessWatcher(configuration, processWhitelister);
+            DirectInputControllerManager directInputManager = DirectInputControllerManager.GetInstance();
             // Suspend main thread
             Thread.Sleep(Timeout.Infinite);
         }

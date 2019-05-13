@@ -22,6 +22,8 @@ namespace ControllerMapper.Source
             this.configuration = configuration;
             this.processWhitelister = processWhitelister;
 
+            Process currentProcess = Process.GetCurrentProcess();
+            processWhitelister.AddToWhitelist(currentProcess.Id);
             CheckAllCurrentProcesses();
 
             startProcessWatcher = new ManagementEventWatcher(new WqlEventQuery("SELECT * FROM Win32_ProcessStartTrace"));
