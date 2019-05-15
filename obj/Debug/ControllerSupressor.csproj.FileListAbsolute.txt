@@ -1,8 +1,0 @@
-E:\Projects\ControllerSuppressor\obj\Debug\ControllerSupressor.csprojAssemblyReference.cache
-E:\Projects\ControllerSuppressor\obj\Debug\ControllerSupressor.csproj.CoreCompileInputs.cache
-E:\Projects\ControllerSuppressor\bin\Debug\Ressources\devcon.exe
-E:\Projects\ControllerSuppressor\bin\Debug\ControllerSupressors.exe.config
-E:\Projects\ControllerSuppressor\bin\Debug\ControllerSupressors.exe
-E:\Projects\ControllerSuppressor\bin\Debug\ControllerSupressors.pdb
-E:\Projects\ControllerSuppressor\obj\Debug\ControllerSupressors.exe
-E:\Projects\ControllerSuppressor\obj\Debug\ControllerSupressors.pdb
