@@ -1,4 +1,5 @@
-﻿using SharpDX.DirectInput;
+﻿using Nefarius.ViGEm.Client.Targets.Xbox360;
+using SharpDX.DirectInput;
 using System;
 
 namespace ControllerSupressor.Source.Input
@@ -6,16 +7,14 @@ namespace ControllerSupressor.Source.Input
     class UnknownDirectInputController : DirectInputController
     {
         internal UnknownDirectInputController(DirectInput directInput, DeviceInstance deviceInstance) : base(directInput, deviceInstance)
-        {
+        { }
 
-        }
-
-        internal override bool checkForActivation()
+        protected override bool CheckForActivation()
         {
             return false;
         }
 
-        internal override void getXInputState()
+        protected override Xbox360Report MapToXInputDevice(JoystickState directInputState)
         {
             throw new NotImplementedException();
         }
