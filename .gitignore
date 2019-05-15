@@ -1,4 +1,2 @@
-HidGuardian/
-HidWhitelistService.exe
-AHK/vGenInterface.pdf
-AHK/vGenInterface.dll
+obj
+bin
