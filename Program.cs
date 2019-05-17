@@ -8,9 +8,7 @@ using NLog.Config;
 using System.Security.Principal;
 using ControllerSupressor.Source.Input;
 using System.Diagnostics;
-using SharpDX.XInput;
-using SharpDX.RawInput;
-using ControllerMapper.Source.Mouse;
+using ControllerMapper.Source.MouseControlMapper;
 
 namespace ControllerMapper
 {
@@ -33,53 +31,10 @@ namespace ControllerMapper
             processWhitelister.PurgeWhitelist();
             processWhitelister.AddToWhitelist(Process.GetCurrentProcess().Id);
             ControllerManager directInputManager = ControllerManager.GetInstance();
-            //MouseControl mouseControl = MouseControl.GetInstance();
+            MouseControlMapper mouseControl = MouseControlMapper.GetInstance();
             // Suspend main thread
             Thread.Sleep(Timeout.Infinite);
         }
-
-        static void MainForJoystick()
-        {
-            return;
-            Console.WriteLine("Start XGamepadApp");
-            // Initialize XInput
-            var controllers = new[] { new SharpDX.XInput.Controller(UserIndex.One), new SharpDX.XInput.Controller(UserIndex.Two), new SharpDX.XInput.Controller(UserIndex.Three), new SharpDX.XInput.Controller(UserIndex.Four) };
-
-            // Get 1st controller available
-            SharpDX.XInput.Controller controller = null;
-            foreach (var selectControler in controllers)
-            {
-                if (selectControler.IsConnected)
-                {
-                    controller = selectControler;
-                    break;
-                }
-            }
-
-            if (controller == null)
-            {
-                Console.WriteLine("No XInput controller installed");
-            }
-            else
-            {
-
-                Console.WriteLine("Found a XInput controller available");
-                Console.WriteLine("Press buttons on the controller to display events or escape key to exit... ");
-
-                // Poll events from joystick
-                var previousState = controller.GetState();
-                while (controller.IsConnected)
-                {
-                    var state = controller.GetState();
-                    if (previousState.PacketNumber != state.PacketNumber)
-                        Console.WriteLine(state.Gamepad);
-                    Thread.Sleep(10);
-                    previousState = state;
-                }
-            }
-            Console.WriteLine("End XGamepadApp");
-        }
-
         private static void ConfigLogger()
         {
             var config = new LoggingConfiguration();

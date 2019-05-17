@@ -1,0 +1,6 @@
+E:\Projects\ControllerMapper\bin\x64\Release\ControllerMapper.exe.config
+E:\Projects\ControllerMapper\bin\x64\Release\ControllerMapper.exe
+E:\Projects\ControllerMapper\bin\x64\Release\ControllerMapper.pdb
+E:\Projects\ControllerMapper\obj\x64\Release\ControllerMapper.csproj.CoreCompileInputs.cache
+E:\Projects\ControllerMapper\obj\x64\Release\ControllerMapper.exe
+E:\Projects\ControllerMapper\obj\x64\Release\ControllerMapper.pdb

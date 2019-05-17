@@ -8,9 +8,6 @@ using ControllerMapper.Source;
 
 namespace ControllerSupressor.Source.Input
 {
-    // https://codereview.stackexchange.com/questions/68711/joystick-helper-class
-    // https://github.com/sharpdx/SharpDX-Samples/blob/master/Desktop/DirectInput/JoystickApp/Program.cs
-    // https://forums.vigem.org/topic/6/use-vigem-to-create-xbox-360-controller-in-c/20
     class ControllerManager
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -18,7 +15,8 @@ namespace ControllerSupressor.Source.Input
         private static Timer detectTimer;
         private static Timer updateTimer;
         private readonly DirectInput directInput;
-        //TODO threadsafe list
+        // TODO react to controller pull
+        // TODO threadsafe list
         private List<DirectInputController> controllers = new List<DirectInputController>();
 
 
@@ -29,10 +27,12 @@ namespace ControllerSupressor.Source.Input
             detectTimer.Elapsed += DetectDevices;
             detectTimer.Interval = 5000;
             detectTimer.Enabled = true;
+            detectTimer.AutoReset = false;
             updateTimer = new Timer();
             updateTimer.Elapsed += UpdateDevices;
             updateTimer.Interval = 15; // ~60FPS
             updateTimer.Enabled = true;
+            updateTimer.AutoReset = false;
         }
 
         internal static ControllerManager GetInstance()
@@ -46,10 +46,22 @@ namespace ControllerSupressor.Source.Input
         {
             if (controllers.Count == 0)
                 return;
+            List<DirectInputController> controllersToRemove = new List<DirectInputController>();
             foreach(DirectInputController controller in controllers)
             {
-                controller.Update();
+                try
+                {
+                    controller.Update();
+                } catch (Exception ex)
+                {
+                    controllersToRemove.Add(controller);
+                }
             }
+            foreach (DirectInputController controller in controllersToRemove)
+            {
+                controller.DeActivate();
+            }
+            updateTimer.Start();
         }
 
         private void DetectDevices(object source, ElapsedEventArgs ee)
@@ -66,6 +78,7 @@ namespace ControllerSupressor.Source.Input
                 controllers.Add(newController);
                 logger.Debug($"Detected controller {deviceInstance.InstanceName} as Type {newController.GetType().Name}");
             }
+            detectTimer.Start();
         }
 
         private string ConvertProductGuidToHid(Guid guid)

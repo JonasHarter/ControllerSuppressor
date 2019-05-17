@@ -40,12 +40,33 @@ namespace ControllerSupressor.Source.Input
             {
                 try
                 {
-                    emnulatedController.Connect();
-                    activated = true;
+                    Activate();
                 }
                 catch (Exception ex)
                 { }
             }
+        }
+
+        internal void Activate()
+        {
+            try
+            {
+                emnulatedController.Connect();
+                activated = true;
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        internal void DeActivate()
+        {
+            activated = false;
+            try
+            {
+                emnulatedController.Disconnect();
+            }
+            catch (Exception ex)
+            { }
         }
 
         private void UpdateXInputDevice()

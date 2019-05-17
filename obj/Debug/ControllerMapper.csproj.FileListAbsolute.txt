@@ -1,0 +1,14 @@
+E:\Projects\ControllerSuppressor\bin\Debug\ControllerMapper.exe.config
+E:\Projects\ControllerSuppressor\bin\Debug\ControllerMapper.exe
+E:\Projects\ControllerSuppressor\bin\Debug\ControllerMapper.pdb
+E:\Projects\ControllerSuppressor\obj\Debug\ControllerMapper.csprojAssemblyReference.cache
+E:\Projects\ControllerSuppressor\obj\Debug\ControllerMapper.csproj.CoreCompileInputs.cache
+E:\Projects\ControllerSuppressor\obj\Debug\ControllerMapper.exe
+E:\Projects\ControllerSuppressor\obj\Debug\ControllerMapper.pdb
+E:\Projects\ControllerMapper\bin\Debug\ControllerMapper.exe.config
+E:\Projects\ControllerMapper\bin\Debug\ControllerMapper.exe
+E:\Projects\ControllerMapper\bin\Debug\ControllerMapper.pdb
+E:\Projects\ControllerMapper\obj\Debug\ControllerMapper.csprojAssemblyReference.cache
+E:\Projects\ControllerMapper\obj\Debug\ControllerMapper.csproj.CoreCompileInputs.cache
+E:\Projects\ControllerMapper\obj\Debug\ControllerMapper.exe
+E:\Projects\ControllerMapper\obj\Debug\ControllerMapper.pdb
