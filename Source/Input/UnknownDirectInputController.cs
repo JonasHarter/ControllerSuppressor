@@ -6,13 +6,8 @@ namespace ControllerSupressor.Source.Input
 {
     class UnknownDirectInputController : DirectInputController
     {
-        internal UnknownDirectInputController(DirectInput directInput, DeviceInstance deviceInstance) : base(directInput, deviceInstance)
+        internal UnknownDirectInputController(DeviceInstance deviceInstance) : base(deviceInstance)
         { }
-
-        protected override bool CheckForActivation()
-        {
-            return false;
-        }
 
         protected override Xbox360Report MapToXInputDevice(JoystickState directInputState)
         {

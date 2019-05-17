@@ -9,7 +9,7 @@ namespace ControllerMapper.Source
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public List<string> processList { get; } = new List<string>();
+        public List<string> HidList { get; } = new List<string>();
 
         private static Configuration Instance;
 
@@ -22,11 +22,11 @@ namespace ControllerMapper.Source
             return Instance;
         }
 
-        public bool Contains(string processName)
+        public bool Contains(string hid)
         {
-            foreach (string configProcess in processList)
+            foreach (string listHid in HidList)
             {
-                if (configProcess.ToLower().Equals(processName.ToLower()))
+                if (listHid.Contains(hid))
                     return true;
             }
             return false;
@@ -39,6 +39,8 @@ namespace ControllerMapper.Source
             {
                 serializer.Serialize(writer.BaseStream, this);
             }
+            // TODO don'T write file as admin
+            // https://social.msdn.microsoft.com/Forums/vstudio/en-US/f85c9b29-b5ff-4ddb-b8fd-57fb71f5cb08/c-file-write-using-another-account-also-changed-file-privilege-how-to-avoid-it?forum=csharpgeneral
         }
 
         private static Configuration Load()
@@ -57,9 +59,8 @@ namespace ControllerMapper.Source
                 Configuration x = new Configuration();
                 if (!File.Exists(Program.configurationFilePath))
                 {
-                    // Probably the common ones
-                    x.processList.Add("XOutput.exe");
-                    x.processList.Add("UCR.exe");
+                    x.HidList.Add("HID\\VID_0F0D&PID_00DC&IG_00");
+                    //x.HidList.Add("HID\\VID_045E&PID_02FFC&IG_00");
                     x.Save();
                 }
                 return x;
