@@ -86,12 +86,12 @@ namespace ControllerMapper.Source.Mouse
 
         private bool CheckForActivate(Gamepad state)
         {
-            return state.Buttons.HasFlag(GamepadButtonFlags.Start) && state.Buttons.HasFlag(GamepadButtonFlags.DPadUp);
+            return state.Buttons.HasFlag(GamepadButtonFlags.LeftShoulder) && state.Buttons.HasFlag(GamepadButtonFlags.RightShoulder) && state.Buttons.HasFlag(GamepadButtonFlags.DPadUp);
         }
 
         private bool CheckForDeactivate(Gamepad state)
         {
-            return state.Buttons.HasFlag(GamepadButtonFlags.Start) && state.Buttons.HasFlag(GamepadButtonFlags.DPadDown);
+            return state.Buttons.HasFlag(GamepadButtonFlags.LeftShoulder) && state.Buttons.HasFlag(GamepadButtonFlags.RightShoulder) && state.Buttons.HasFlag(GamepadButtonFlags.DPadDown);
         }
 
         private void updateController(Gamepad state)
@@ -101,12 +101,12 @@ namespace ControllerMapper.Source.Mouse
             if (state.Buttons.HasFlag(GamepadButtonFlags.B))
                 deltaFactor /= 2;
             int deltaX = 0;
-            if (state.LeftThumbX > 300 || state.LeftThumbX < -300)
+            if (state.LeftThumbX > 3200 || state.LeftThumbX < -3200)
             {
                 deltaX = (int)((double)state.LeftThumbX / short.MaxValue * deltaFactor);
             }
             int deltaY = 0;
-            if (state.LeftThumbY > 300 || state.LeftThumbY < -300)
+            if (state.LeftThumbY > 3200 || state.LeftThumbY < -3200)
             {
                 deltaY = (int)((double)state.LeftThumbY / short.MaxValue * deltaFactor);
             }
@@ -118,13 +118,14 @@ namespace ControllerMapper.Source.Mouse
             }
             else
             {
+                Console.WriteLine(state.RightThumbY);
                 mouseWheelLimiter = 10;
                 int vScroll = 0;
-                if (state.RightThumbY > 300)
+                if (state.RightThumbY > 3200)
                 {
                     vScroll = 1;
                 }
-                else if (state.RightThumbY < -300)
+                else if (state.RightThumbY < -3200)
                 {
                     vScroll = -1;
                 }
